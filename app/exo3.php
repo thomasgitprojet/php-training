@@ -36,7 +36,10 @@ $prices = [3, 2, 2, 5, 8];
             <h2 class="exercice-ttl">Question 1</h2>
             <p class="exercice-txt">Ordonner le tableau des prix par ordre croissant et l'afficher en détail</p>
             <div class="exercice-sandbox">
-                
+                <?php
+                    sort($prices);
+                    var_dump($prices);
+                ?>
             </div>
         </section>
 
@@ -45,7 +48,12 @@ $prices = [3, 2, 2, 5, 8];
             <h2 class="exercice-ttl">Question 2</h2>
             <p class="exercice-txt">Ajouter 1 euro à chaque prix</p>
             <div class="exercice-sandbox">
-                
+            <?php
+                    foreach ($prices as $i => $price) {
+                        $prices[$i]++;
+                    }
+                    var_dump($prices);
+            ?>
             </div>
         </section>
 
@@ -54,7 +62,11 @@ $prices = [3, 2, 2, 5, 8];
             <h2 class="exercice-ttl">Question 3</h2>
             <p class="exercice-txt">Créer le tableau $store qui combine les tableaux des fruits et des prix afin d'obtenir un tableau associatif d'attribution des prix. Afficher le tableau obtenu</p>
             <div class="exercice-sandbox">
-                
+                <?php
+                    var_dump($prices);
+                    $store = array_combine($fruits, $prices);
+                    var_dump($store);
+                ?>
             </div>
         </section>
 
@@ -63,7 +75,19 @@ $prices = [3, 2, 2, 5, 8];
             <h2 class="exercice-ttl">Question 4</h2>
             <p class="exercice-txt">Afficher dans une liste HTML le nom des fruits ayant un prix inférieur à 4 euros</p>
             <div class="exercice-sandbox">
-                
+                <ul>
+                    <?php
+                        foreach ($store as $fruit => $price) {
+                            if ($price < 4) {
+                                echo "<li>$fruit</li>";
+                            }
+                        var_dump($store);
+                        var_dump($price, $store['ananas']);
+
+                        }
+                        var_dump($store);
+                    ?>
+                </ul>
             </div>
         </section>
 
@@ -72,7 +96,16 @@ $prices = [3, 2, 2, 5, 8];
             <h2 class="exercice-ttl">Question 5</h2>
             <p class="exercice-txt">Afficher dans une liste HTML le nom des fruits ayant un prix pair</p>
             <div class="exercice-sandbox">
-                
+                <ul>
+                    <?php
+                    var_dump($store);
+                        foreach ($store as $fruit => $price) {
+                            if ($price % 2 === 0) {
+                                echo "<li>$fruit</li>";
+                            }
+                        }
+                    ?>
+                </ul>
             </div>
         </section>
 
