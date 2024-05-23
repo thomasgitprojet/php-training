@@ -1,5 +1,4 @@
 <?php
-
 // Json file
 try {
     $fileContent = file_get_contents("datas/series.json");
@@ -49,7 +48,15 @@ try {
             <h2 class="exercice-ttl">Question 1</h2>
             <p class="exercice-txt">Récupérer dans un tableau puis afficher l'ensemble des plateformes de diffusion des séries. Afficher les par ordre alphabétique.</p>
             <div class="exercice-sandbox">
-                
+                <?php
+                include "functions.php";
+                    $platform = [];
+                    foreach ($series as $key => $serie) {
+                        array_push($platform, $serie["availableOn"]);
+                        sort($platform);
+                    }
+                    var_dump(supOccurence($platform));
+                ?>
             </div>
         </section>
 
@@ -59,7 +66,15 @@ try {
             <p class="exercice-txt">Afficher la liste de toutes les séries avec l'image principale et son titre</p>
             <p class="exercice-txt">Afficher une seule série par ligne sur les plus petits écrans, 2 séries par ligne sur les écrans intermédiaires et 4 séries par ligne sur un écran d'ordinateur.</p>
             <div class="exercice-sandbox">
-
+                <?php
+                    foreach ($series as $key => $serie) {
+                        echo 
+                            "<a href= #{$serie['id']}>
+                            <h1>{$serie['name']}</h1>
+                            </a>
+                            <img src= {$serie['image']} alt= {$serie['name']}/>";
+                    }
+                ?>   
             </div>
         </section>
 
@@ -68,7 +83,13 @@ try {
             <h2 class="exercice-ttl">Question 3</h2>
             <p class="exercice-txt">Ajouter un lien aux séries listées ci-dessus menant à cette page avec en paramètre "serie", l'identifiant de la série</p>
             <div class="exercice-sandbox">
-
+                <?php
+                    foreach ($series as $key => $serie) {
+                        echo 
+                        "<h1 id ={$serie['id']} >{$serie['name']}<h1>
+                        <img src= {$serie['image']} alt= {$serie['name']} />";                              
+                    }
+                ?>
             </div>
         </section>
 
